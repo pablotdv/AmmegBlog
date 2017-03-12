@@ -3,5 +3,37 @@
     ViewData["Title"] = "Test";
 }
 
-<h2>Test</h2>
+<textarea style="opacity:0; height:480px; width:100%;" id="txtContent" class="post"></textarea>
 
+
+@section Scripts {
+<environment names="Development">
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+</environment>
+    <script>
+        tinymce.init({
+            selector: '#txtContent',
+            plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen textcolor imagetools",
+                "insertdatetime media table contextmenu paste sh4tinymce"
+            ],
+            toolbar: "styleselect | bold underline italic | alignleft aligncenter alignright | bullist numlist | forecolor backcolor | link media sh4tinymce | fullscreen code",
+            autosave_ask_before_unload: false,
+            max_height: 1000,
+            min_height: 300,
+            height: 500,
+            menubar: false,
+            relative_urls: false,
+            browser_spellcheck: true,
+            paste_data_images: true,
+            setup: function (editor) {
+                editor.on('init', function (e) {
+                    if (htmlContent) {
+                        editor.setContent(htmlContent);
+                    }
+                });
+            }
+        });
+    </script>
+}
