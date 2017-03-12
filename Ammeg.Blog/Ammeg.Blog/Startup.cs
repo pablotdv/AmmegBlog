@@ -17,6 +17,8 @@ namespace Ammeg.Blog
 {
     public class Startup
     {
+        string _testSecret = null;
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -35,10 +37,13 @@ namespace Ammeg.Blog
         }
 
         public IConfigurationRoot Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _testSecret = Configuration["MySecret"];
+
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
