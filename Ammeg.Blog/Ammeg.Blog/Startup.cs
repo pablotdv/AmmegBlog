@@ -62,6 +62,9 @@ namespace Ammeg.Blog
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
+
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -88,13 +91,6 @@ namespace Ammeg.Blog
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-                context.Database.Migrate();
-                context.EnsureSeedData();
-            }
         }
     }
 }

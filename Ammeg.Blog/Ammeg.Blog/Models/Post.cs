@@ -20,6 +20,6 @@ namespace Ammeg.Blog.Models
         public Guid AutorId { get; set; }
 
         [ForeignKey(nameof(AutorId))]
-        public virtual ApplicationUser Usuario {get;set;}
+        public virtual ApplicationUser Usuario {get;set;}        
     }
 }
