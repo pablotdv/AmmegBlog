@@ -20,8 +20,8 @@ namespace Ammeg.Blog.Tests
             var post = new Post()
             {
                 PostId = Guid.NewGuid(),
-                Conteudo = "Conteúdo",
-                Titulo = "Título",
+                Conteudo = "ConteÃºdo",
+                Titulo = "TÃ­tulo",
                 Usuario = new ApplicationUser() { }
             };
 
