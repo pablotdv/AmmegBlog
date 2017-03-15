@@ -13,10 +13,13 @@ namespace Ammeg.Blog.Models
         [Key]
         public Guid PostId { get; set; }
 
+        [Required]
         public string Titulo { get; set; }
 
+        [Required]
         public string Conteudo { get; set; }
 
+        [Required]
         public Guid AutorId { get; set; }
 
         [ForeignKey(nameof(AutorId))]
