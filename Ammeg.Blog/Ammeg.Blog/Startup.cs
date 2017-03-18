@@ -48,8 +48,8 @@ namespace Ammeg.Blog
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext, Guid>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()                
+                .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
@@ -62,9 +62,6 @@ namespace Ammeg.Blog
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            
-
-
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -73,6 +70,7 @@ namespace Ammeg.Blog
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
+                SeedData.Migrations(app.ApplicationServices).Wait();
             }
             else
             {
@@ -91,6 +89,9 @@ namespace Ammeg.Blog
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.SeedRoles(app.ApplicationServices).Wait();
+            SeedData.SeedUsers(app.ApplicationServices).Wait();
         }
     }
 }

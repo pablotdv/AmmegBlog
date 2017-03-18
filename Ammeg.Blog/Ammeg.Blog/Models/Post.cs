@@ -20,7 +20,7 @@ namespace Ammeg.Blog.Models
         public string Conteudo { get; set; }
 
         [Required]
-        public Guid AutorId { get; set; }
+        public string AutorId { get; set; }
 
         [ForeignKey(nameof(AutorId))]
         public virtual ApplicationUser Usuario {get;set;}        

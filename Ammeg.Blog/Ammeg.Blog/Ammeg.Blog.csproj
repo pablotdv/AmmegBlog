@@ -4,7 +4,8 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <UserSecretsId>aspnet-temp-3BC5CFAE-D249-4579-8E83-5D947FBC4B6E</UserSecretsId>
     <ApplicationInsightsResourceId>/subscriptions/11ea59e0-bc77-4bdd-bccb-e2808ef846ad/resourcegroups/AmmegBlog/providers/microsoft.insights/components/ammegblog</ApplicationInsightsResourceId>
-    <ApplicationInsightsAnnotationResourceId>/subscriptions/11ea59e0-bc77-4bdd-bccb-e2808ef846ad/resourcegroups/AmmegBlog/providers/microsoft.insights/components/ammegblog</ApplicationInsightsAnnotationResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/11ea59e0-bc77-4bdd-bccb-e2808ef846ad/resourcegroups/AmmegBlog/providers/microsoft.insights/components/ammegblog</ApplicationInsightsAnnotationResourceId>    
+    <PackageTargetFallback>portable-net45+win8+wp8+wpa81</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +21,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
