@@ -37,7 +37,7 @@ namespace Ammeg.Blog
         }
 
         public IConfigurationRoot Configuration { get; }
-        
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -48,9 +48,16 @@ namespace Ammeg.Blog
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()                
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddAuthorization(options => {
+                options.AddPolicy("Administradores",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administradores");
+                    });
+            });
 
             services.AddMvc();
 
@@ -85,6 +92,9 @@ namespace Ammeg.Blog
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areaRoute",                    
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

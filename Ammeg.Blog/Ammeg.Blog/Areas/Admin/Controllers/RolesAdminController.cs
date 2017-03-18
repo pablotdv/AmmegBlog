@@ -9,9 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ammeg.Blog.Controllers
-{
-    [Authorize]
+namespace Ammeg.Blog.Areas.Admin.Controllers
+{    
     public class RolesAdminController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

@@ -39,4 +39,8 @@
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Home\" />
+  </ItemGroup>
+
 </Project>
